@@ -74,11 +74,9 @@ class TodoService:
             r = requests.get(settings.quote_api_url, timeout=5)
             r.raise_for_status()
             data = r.json()
-            content = data.get("content") or data.get("quote") or ""
-            author = data.get("author") or ""
-            text = (f"{content} — {author}").strip(" -—")
+            content = data.get("value") or ""
             if content:
-                return text[:500]
+                return content[:500]
         except Exception:
             pass
         return "Fallback idézet: csináld meg ma, hogy holnap nyugi legyen."

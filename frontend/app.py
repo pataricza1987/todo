@@ -84,7 +84,12 @@ st.subheader("Feladatok")
 for t in todos:
     with st.container(border=True):
         top = st.columns([0.08, 0.62, 0.30])
-        done = top[0].checkbox("", value=bool(t.get("done")), key=f"done_{t['id']}")
+        done = top[0].checkbox(
+            "Kész",
+            value=bool(t.get("done")),
+            key=f"done_{t['id']}",
+            label_visibility="collapsed",
+        )
         title = t.get("title", "")
         prio = t.get("priority", 3)
         due = t.get("due_date")

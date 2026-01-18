@@ -4,9 +4,9 @@ import asyncio
 import logging
 from datetime import datetime, timedelta
 
-from ..config import settings
-from ..db import SessionLocal
-from ..services import TodoService
+from backend.app.config import settings
+from backend.app.db import SessionLocal
+from backend.app.services import TodoService
 
 logger = logging.getLogger(__name__)
 

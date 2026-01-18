@@ -4,8 +4,8 @@ import logging
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-from .api.routes import router as todos_router
-from .automation.scheduler import run_scheduler_forever
+from backend.app.routes import router as todos_router
+from backend.app.scheduler import run_scheduler_forever
 from .db import Base, engine
 
 logging.basicConfig(

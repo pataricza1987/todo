@@ -3,9 +3,9 @@ import logging
 from fastapi import APIRouter, Depends, HTTPException, status
 from sqlalchemy.orm import Session
 
-from ..db import get_db
-from ..schemas import TodoCreate, TodoOut, TodoUpdate
-from ..services import TodoService
+from backend.app.db import get_db
+from backend.app.schemas import TodoCreate, TodoOut, TodoUpdate
+from backend.app.services import TodoService
 
 logger = logging.getLogger(__name__)
 

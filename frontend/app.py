@@ -3,6 +3,11 @@ from datetime import datetime
 
 import requests
 import streamlit as st
+from streamlit_autorefresh import st_autorefresh
+
+# REFRESH_SECONDS = int(os.getenv("SCHEDULER_INTERVAL_SECONDS", "60"))
+#
+# st_autorefresh(interval=REFRESH_SECONDS * 100, key="refresh")
 
 BACKEND_URL = os.getenv("BACKEND_URL", "http://localhost:8000").rstrip("/")
 

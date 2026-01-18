@@ -34,3 +34,18 @@ def test_delete_todo():
     assert d.status_code == 204
     g = client.get(f"/todos/{todo_id}")
     assert g.status_code == 404
+
+@pytest.mark.parametrize(
+    "title,expected_status",
+    [
+        ("Bevásárlás", 201),
+        ("Nagyon fontos todo", 201),
+    ]
+)
+def test_create_todo_parametrized(title, expected_status):
+    client = TestClient(app)
+    response = client.post(
+        "/todos",
+        json={"title": title}
+    )
+    assert response.status_code == expected_status

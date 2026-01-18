@@ -1,5 +1,7 @@
 # TODO (FastAPI + Streamlit + PostgreSQL)
 
+Ez egy nagyon egyszerű kis TODO app, amibe bele lehet írni a teendőt, és Chuck Norris vicceket lehet rendelni melléjük.
+
 ## Futtatás
 
 ### 1) venv + csomagok
@@ -39,4 +41,3 @@ pytest -q
 - `PATCH /todos/{id}` (módosítás)
 - `DELETE /todos/{id}` (törlés)
 - `POST /todos/{id}/enrich` (API-hívás lánc: külső quote API → DB)
-- `GET /stats` (statisztika)

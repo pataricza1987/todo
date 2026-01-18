@@ -4,6 +4,7 @@ from datetime import datetime
 import requests
 import streamlit as st
 from streamlit_autorefresh import st_autorefresh
+import pandas as pd
 
 # REFRESH_SECONDS = int(os.getenv("SCHEDULER_INTERVAL_SECONDS", "60"))
 #
@@ -84,6 +85,7 @@ except Exception as e:
     st.error(f"Nem érem el a backendet: {e}")
     st.stop()
 
+
 st.subheader("Feladatok")
 
 for t in todos:
@@ -120,3 +122,25 @@ for t in todos:
         if st.button("Törlés", key=f"del_{t['id']}"):
             api_delete(f"/todos/{t['id']}")
             st.rerun()
+
+
+st.subheader("Prioritás áttekintés")
+
+if todos:
+    df = pd.DataFrame(todos)
+
+    if "priority" not in df.columns:
+        df["priority"] = "N/A"
+
+    df["priority"] = df["priority"].fillna("N/A")
+
+    counts = (
+        df["priority"]
+        .astype(str)
+        .value_counts()
+        .sort_index()
+    )
+
+    st.bar_chart(counts)
+else:
+    st.info("Nincs megjeleníthető adat.")
